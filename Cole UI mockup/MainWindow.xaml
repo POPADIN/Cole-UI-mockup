@@ -1,0 +1,52 @@
+﻿<Window x:Class="TestHardwareUI.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Test Hardware Selector" Height="600" Width="800"
+        Background="White">
+    <Grid Margin="20">
+        <!-- Title Section -->
+        <TextBlock Text="Electrical Test Requirements" FontSize="20" FontWeight="Bold" 
+                   HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,0,0,10"/>
+
+        <!-- Test Requirements List -->
+        <ListView Name="TestRequirementsList" Margin="0,40,0,260" VerticalAlignment="Top">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Requirement" Width="400" DisplayMemberBinding="{Binding Requirement}"/>
+                    <GridViewColumn Header="Definition Status" Width="150">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding Status}" 
+                                           Foreground="{Binding StatusColor}" 
+                                           FontWeight="Bold"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                </GridView>
+            </ListView.View>
+        </ListView>
+
+        <!-- Separator -->
+        <Separator Margin="0,300,0,0" HorizontalAlignment="Stretch" VerticalAlignment="Top"/>
+
+        <!-- Hardware Bucket Section -->
+        <TextBlock Text="Minimum Hardware Specification" FontSize="20" FontWeight="Bold"
+                   Margin="0,320,0,0" HorizontalAlignment="Left"/>
+
+        <!-- Hardware List -->
+        <ListView Name="HardwareList" Margin="0,360,0,40" VerticalAlignment="Top">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Hardware Component" Width="400" DisplayMemberBinding="{Binding HardwareName}"/>
+                    <GridViewColumn Header="Description" Width="300" DisplayMemberBinding="{Binding Description}"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+
+        <!-- Buttons for Saving/Pinning -->
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,0,0,10">
+            <Button Content="Save Hardware List" Width="150" Margin="10,0"/>
+            <Button Content="Pin Hardware List" Width="150" Margin="10,0"/>
+        </StackPanel>
+    </Grid>
+</Window>
